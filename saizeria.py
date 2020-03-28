@@ -33,15 +33,20 @@ img2 = img[0:height,midle-8:width-11] #実は、横幅が少し違う...
 #img[y:height,x,width]
 
 #差分を表示
-print(img1.shape)
-print(img2.shape)
-result = np.copy(img1) #結果の画像を格納する配列
 
+result = np.copy(img1) #結果の画像を格納する配列
+add = np.copy(img1) #結果の画像を格納する配列
 #result = img1-img2 # 差分の計算
 result = cv2.absdiff(img1, img2) # 差分の計算
+
+img3 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY) # グレースケール化
+img3 = cv2.cvtColor(img3,cv2.COLOR_GRAY2BGR)
+print(img3.shape)
+print(result.shape)
+add = cv2.add(img3,result)
 #画像の表示
-cv2.imshow('image',img1)
-cv2.imshow('image2',img2)
+cv2.imshow('image',add)
+#cv2.imshow('image2',img2)
 cv2.imshow('result',result)
 cv2.waitKey(0) #何かしらのキーが押されるまで待つ
 cv2.destroyAllWindows() #すべてのWindowを破棄
