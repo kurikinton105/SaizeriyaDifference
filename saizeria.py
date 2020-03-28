@@ -3,11 +3,10 @@ import numpy as np
 
 img = cv2.imread('diff2.png') #画像の読み込み
 height, width, d = img.shape #高さ、幅、深さ
-
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # グレースケール化
 r, binary = cv2.threshold(gray, 0, 255,cv2.THRESH_OTSU)  #しきい値200で2値化
 contours = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
-#n,labels = cv2.connectedComponents(binary)# ラベリング処理
+
 #輪郭の抽出、余白の削除
 x1 = [] #x座標の最小値
 y1 = [] #y座標の最小値
@@ -19,7 +18,6 @@ for i in range(1, len(contours)):
     y1.append(ret[1])
     x2.append(ret[0] + ret[2])
     y2.append(ret[1] + ret[3])
-
 x1_min = min(x1)
 y1_min = min(y1)
 x2_max = max(x2)
@@ -39,8 +37,8 @@ print(img1.shape)
 print(img2.shape)
 result = np.copy(img1) #結果の画像を格納する配列
 
-result = img1-img2 # 差分の計算
-
+#result = img1-img2 # 差分の計算
+result = cv2.absdiff(img1, img2) # 差分の計算
 #画像の表示
 cv2.imshow('image',img1)
 cv2.imshow('image2',img2)
