@@ -158,5 +158,5 @@ cv2.destroyAllWindows() #すべてのWindowを破棄
 
 あくまで、補助するツールでした。
 
-#12月の間違い探しは９こ見つけれました
+#12月の間違い探しは９個見つけれました
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/548598/28198e0b-4325-ab5f-fa2a-7e67d7fd08b2.png)
