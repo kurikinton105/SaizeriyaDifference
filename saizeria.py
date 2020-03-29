@@ -4,7 +4,7 @@ import numpy as np
 img = cv2.imread('diff.png') #画像の読み込み
 height, width, d = img.shape #高さ、幅、深さ
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # グレースケール化
-r, binary = cv2.threshold(gray, 0, 255,cv2.THRESH_OTSU)  #しきい値200で2値化
+r, binary = cv2.threshold(gray, 0, 255,cv2.THRESH_OTSU)  #2値化
 contours = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
 
 #輪郭の抽出、余白の削除
@@ -33,7 +33,6 @@ img2 = img[0:height,midle-8:width-11] #実は、横幅が少し違う...
 #img[y:height,x,width]
 
 #差分を表示
-
 result = np.copy(img1) #結果の画像を格納する配列
 add = np.copy(img1) #結果の画像を格納する配列
 #result = img1-img2 # 差分の計算
@@ -45,7 +44,7 @@ print(img3.shape)
 print(result.shape)
 add = cv2.add(img3,result)
 #画像の表示
-cv2.imshow('all',img)
+#cv2.imshow('all',img)
 cv2.imshow('image',add)
 #cv2.imshow('image1',img1)
 #cv2.imshow('image2',img2)
