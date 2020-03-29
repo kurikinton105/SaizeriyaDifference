@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('diff.png') #画像の読み込み
+img = cv2.imread('diff2.png') #画像の読み込み
 height, width, d = img.shape #高さ、幅、深さ
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # グレースケール化
 r, binary = cv2.threshold(gray, 0, 255,cv2.THRESH_OTSU)  #2値化
